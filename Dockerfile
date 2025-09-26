@@ -5,6 +5,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final, smaller image with only the Java Runtime
+# --- THIS IS THE CORRECTED LINE ---
 FROM openjdk:17-jre-slim
 WORKDIR /app
 
