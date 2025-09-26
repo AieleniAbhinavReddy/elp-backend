@@ -5,8 +5,8 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final, smaller image with only the Java Runtime
-# --- THIS IS THE CORRECTED LINE ---
-FROM openjdk:17-jre-slim
+# --- THIS IS THE UPDATED LINE WITH AN ALTERNATE TAG ---
+FROM openjdk:17-slim
 WORKDIR /app
 
 # Copy the built JAR file from the 'build' stage
