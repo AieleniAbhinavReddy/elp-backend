@@ -5,8 +5,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final, smaller image with only the Java Runtime
-# --- THIS IS THE UPDATED LINE WITH AN ALTERNATE TAG ---
-FROM openjdk:17-slim
+FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
 # Copy the built JAR file from the 'build' stage
