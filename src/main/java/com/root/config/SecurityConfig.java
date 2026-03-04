@@ -42,6 +42,8 @@ public class SecurityConfig {
                         // Auth and publicly accessible endpoints
                         .requestMatchers("/api/auth/**", "/forgot-password", "/reset-password").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/courses/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/dsa/sheets/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/dsa/sheets").permitAll()
                     .requestMatchers("/api/compiler/**").permitAll()
 
                         .anyRequest().authenticated() // All other requests require authentication
