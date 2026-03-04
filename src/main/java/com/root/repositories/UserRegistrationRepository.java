@@ -11,6 +11,7 @@ public interface UserRegistrationRepository extends JpaRepository<UserRegistrati
     List<UserRegistration> findByUserId(Long userId);
 
     // These methods are used by your existing RegistrationController
+    List<UserRegistration> findByUser_Username(String username);
     Optional<UserRegistration> findByUser_UsernameAndCourse_Id(String username, Long courseId);
     void deleteByUser_UsernameAndCourse_Id(String username, Long courseId);
 }

@@ -1,32 +1,23 @@
-package com.root.beans;
+package com.root.dto;
 
-import jakarta.persistence.*;
+import java.util.List;
 
-@Entity
-@Table(name = "courses")
-public class Course {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class CourseDetailResponse {
+    private Long courseId;
     private String title;
-
-    @Column(length = 1000)
     private String description;
-
     private String category;
     private String difficultyLevel;
     private Integer estimatedHours;
-    private Integer totalLessons;
+    private int totalLessons;
+    private List<LessonSummaryDTO> lessons;
 
-    public Course() {}
-
-    public Long getId() {
-        return id;
+    public Long getCourseId() {
+        return courseId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
     }
 
     public String getTitle() {
@@ -69,11 +60,19 @@ public class Course {
         this.estimatedHours = estimatedHours;
     }
 
-    public Integer getTotalLessons() {
+    public int getTotalLessons() {
         return totalLessons;
     }
 
-    public void setTotalLessons(Integer totalLessons) {
+    public void setTotalLessons(int totalLessons) {
         this.totalLessons = totalLessons;
+    }
+
+    public List<LessonSummaryDTO> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<LessonSummaryDTO> lessons) {
+        this.lessons = lessons;
     }
 }

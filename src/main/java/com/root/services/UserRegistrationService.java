@@ -31,4 +31,24 @@ public class UserRegistrationService {
                             .map(UserRegistration::getCourse)
                             .collect(Collectors.toList());
     }
+
+    public List<UserRegistration> findRegistrationsByUsername(String username) {
+        userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+
+        return userRegistrationRepository.findByUser_Username(username);
+    }
+
+    public UserRegistration updateProgress(String username, Long courseId, Integer completionPercentage, String lastAccessedLesson) {
+        UserRegistration registration = userRegistrationRepository
+                .findByUser_UsernameAndCourse_Id(username, courseId)
+                .orElseThrow(() -> new IllegalArgumentException("You are not registered for this course."));
+
+        int safePercentage = completionPercentage == null ? 0 : Math.max(0, Math.min(100, completionPercentage));
+        registration.setCompletionPercentage(safePercentage);
+        registration.setLastAccessedLesson(lastAccessedLesson);
+        registration.setCompleted(safePercentage >= 100);
+
+        return userRegistrationRepository.save(registration);
+    }
 }

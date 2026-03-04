@@ -39,19 +39,20 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        // Auth and publicly accessible endpoints
                         .requestMatchers("/api/auth/**", "/forgot-password", "/reset-password").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/courses/**").permitAll()
+                    .requestMatchers("/api/compiler/**").permitAll()
 
-                        // --- THIS IS THE NEW LINE YOU NEED TO ADD ---
-                        .requestMatchers("/api/compiler/**").permitAll()
-
-                        .anyRequest().authenticated()
+                        .anyRequest().authenticated() // All other requests require authentication
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
+    
+    // ... (Keep the rest of the file unchanged) ...
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
