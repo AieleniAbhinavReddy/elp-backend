@@ -161,24 +161,26 @@
     - Result: ✅ SUCCESS - Java 21 and Maven wrapper 3.9.11 available
     - Notes: Environment is ready; no installations required
   - **Deferred Work**: None
-  - **Commit**: Pending
+  - **Commit**: e8d35ad - Step 1: Setup Environment - Compile: SUCCESS
 
 - **Step 2: Setup Baseline**
-  - **Status**: 🔘 Not Started
+  - **Status**: ✅ Completed
   - **Changes Made**:
-    - None yet
+    - Ran baseline compile using Maven wrapper on Java 21
+    - Ran baseline tests and captured surefire failure details
+    - Recorded baseline pass rate for final acceptance comparison
   - **Review Code Changes**:
-    - Sufficiency: Pending
-    - Necessity: Pending
-      - Functional Behavior: Pending
-      - Security Controls: Pending
+    - Sufficiency: ✅ All required changes present
+    - Necessity: ✅ All changes necessary
+      - Functional Behavior: ✅ Preserved
+      - Security Controls: ✅ Preserved
   - **Verification**:
-    - Command: Pending
-    - JDK: Pending
-    - Build tool: Pending
-    - Result: Pending
-    - Notes: Pending
-  - **Deferred Work**: Pending
+    - Command: `./mvnw.cmd clean test-compile -q` and `./mvnw.cmd clean test -q`
+    - JDK: `C:\Program Files\Eclipse Adoptium\jdk-21.0.8.9-hotspot`
+    - Build tool: `.` (Maven wrapper)
+    - Result: ✅ Compilation SUCCESS | ⚠️ Tests: 0/1 passed (1 error)
+    - Notes: `ELearningProjectApplicationTests.contextLoads` fails due to missing JDBC metadata/dialect
+  - **Deferred Work**: Re-check baseline test error behavior after Java target change in Final Validation
   - **Commit**: Pending
 
 - **Step 3: Upgrade Project Java Target to 21**
