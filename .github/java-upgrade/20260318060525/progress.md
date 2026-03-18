@@ -181,24 +181,26 @@
     - Result: ✅ Compilation SUCCESS | ⚠️ Tests: 0/1 passed (1 error)
     - Notes: `ELearningProjectApplicationTests.contextLoads` fails due to missing JDBC metadata/dialect
   - **Deferred Work**: Re-check baseline test error behavior after Java target change in Final Validation
-  - **Commit**: Pending
+  - **Commit**: 695bdf8 - Step 2: Setup Baseline - Compile: SUCCESS | Tests: 0/1 passed
 
 - **Step 3: Upgrade Project Java Target to 21**
-  - **Status**: 🔘 Not Started
+  - **Status**: ✅ Completed
   - **Changes Made**:
-    - None yet
+    - Updated `pom.xml` `java.version` from `17` to `21`
+    - Rebuilt main and test sources on Java 21
+    - Confirmed no compilation regressions introduced
   - **Review Code Changes**:
-    - Sufficiency: Pending
-    - Necessity: Pending
-      - Functional Behavior: Pending
-      - Security Controls: Pending
+    - Sufficiency: ✅ All required changes present
+    - Necessity: ✅ All changes necessary
+      - Functional Behavior: ✅ Preserved
+      - Security Controls: ✅ Preserved
   - **Verification**:
-    - Command: Pending
-    - JDK: Pending
-    - Build tool: Pending
-    - Result: Pending
-    - Notes: Pending
-  - **Deferred Work**: Pending
+    - Command: `./mvnw.cmd clean test-compile -q`
+    - JDK: `C:\Program Files\Eclipse Adoptium\jdk-21.0.8.9-hotspot`
+    - Build tool: `.` (Maven wrapper)
+    - Result: ✅ Compilation SUCCESS
+    - Notes: Test execution deferred to Final Validation
+  - **Deferred Work**: Validate full test run and baseline comparison in Final Validation
   - **Commit**: Pending
 
 - **Step 4: Final Validation**
